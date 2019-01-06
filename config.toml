@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://amarinhosn.github.io/flexgeo_site/"
 languageCode = "en-us"
 title = "FleXgeo documentation"
 # Change the default theme to be use when building the site with Hugo
