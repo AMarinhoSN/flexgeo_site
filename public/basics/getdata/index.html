@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.52" />
+    <meta name="description" content="FleXgeo documentation page">
+<meta name="author" content="AMarinhoSN">
+
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link rel="icon" href="/images/favicon.png" type="image/x-icon" />
+    <title>Define analyses objectives :: FleXgeo documentation</title>
+
+    
+    <link href="/css/nucleus.css?1546781276" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1546781276" rel="stylesheet">
+    <link href="/css/hybrid.css?1546781276" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1546781276" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1546781276" rel="stylesheet">
+    <link href="/css/auto-complete.css?1546781276" rel="stylesheet">
+    <link href="/css/theme.css?1546781276" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1546781276" rel="stylesheet">
+    
+    <script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+
+    <script src="/js/jquery-2.x.min.js?1546781276"></script>
+
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/basics/getdata/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <h1><span style="color:#F0FFFF;"><span style="font-family:verdana,geneva,sans-serif;">FleXgeo</span></span></h1>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1546781276"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1546781276"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1546781276"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/basics/" title="Basics" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/basics/">
+          <b>1. </b>Basics
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/basics/setup/" title="Setup everything" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/basics/setup/">
+          <b>1.1 </b>Setup everything
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/basics/getdata/" title="Define analyses objectives" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/basics/getdata/">
+          <b>1.2 </b>Define analyses objectives
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/basics/computedg/" title="Compute differential geometry" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/basics/computedg/">
+          <b>1.3 </b>Compute differential geometry
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/" title="Installation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/installation/">
+          <b>2. </b>Installation
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/quickguide/" title="Quick guide" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/quickguide/">
+          <b>3. </b>Quick guide
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/AMarinhoSN/FleXgeo"><i class='fab fa-fw fa-github'></i> Github repo</a>
+              </li>
+          
+              <li> 
+                  <a class="padding" href="/credits"><i class='fas fa-fw fa-bullhorn'></i> Credits</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+      
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="http://getgrav.org">Grav</a> and <a href="http://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   Define analyses objectives
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-we-want-to-know">What we want to know?</a></li>
+<li><a href="#what-data-do-we-have">What data do we have?</a></li>
+<li><a href="#why-use-differential-geometry">Why use differential geometry?</a></li>
+<li><a href="#main-goal">Main goal</a></li>
+<li><a href="#specific-goals">Specific goals</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+
+        
+        <div id="body-inner">
+          
+            <h1>Define analyses objectives</h1>
+          
+
+        
+
+
+
+
+<p>On this basic tutorial, we will reproduce the analyses of the Ubiquitin ensemble presented at FleXgeo paper. The Ubiquitin (Ubq) is a good example of a <strong>regular rigid globular protein with a very flexible N-terminal tail</strong>. This is a fairly simple and common analyses scenario on protein structural biology projects, therefore a good place to start. As on any data analyses scenario, before we start to do anything at all let&rsquo;s define as objectively as possible our questions and goals.</p>
+
+<hr />
+
+<h2 id="what-we-want-to-know">What we want to know?</h2>
+
+<p>Flexibility is an important aspect of protein function and let&rsquo;s assume that for some reason you are interest on Ubq N-terminal tail dynamics.
+Maybe you found experimental evidence that mutations on this region affects Ubq binding capabilities and want to know how flexible it actually is and which residues are more important.</p>
+
+<hr />
+
+<h2 id="what-data-do-we-have">What data do we have?</h2>
+
+<p>Fortunately, there is an Ubq conformational ensemble determined based on NMR-restrained metadynamics available at Protein Data Bank (<a href="https://www.rcsb.org/structure/2LJ5" target="_blank">2LJ5</a>). This ensemble is composed of 300 conformations which best fit the Residual Dipolar Coupling data obtained. This data can provide a baseline to compare how the tail behave under</p>
+
+<div class="notices note" ><p>Although not necessary to follow this tutorial, but you should check <a href="https://link.springer.com/article/10.1007%2Fs10858-012-9644-3" target="_blank">the paper describing how this ensemble was obtained</a></p>
+</div>
+
+
+<hr />
+
+<h2 id="why-use-differential-geometry">Why use differential geometry?</h2>
+
+<p>This is an common scenario in which the decision of how to superimpose the structure is crucial to the measurements. Of course this is true for atomic coordinates, but there is also the possibility of use $\phi-\psi$ angles or define some set of collective variables. But for the porpouse of this tutorial, let&rsquo;s assume you try those and for some reason did not trust the results. Maybe you are not sure if your collective variables are capturing every dynamics aspect you need, or the periodicity of $\phi-\psi$ are making things more complicated in the data analyses. So do you wonder if it would be nice to have an intuitive mathematical representation of the protein conformational space, some friend told you about the advantages of DG representation, you checked a awesome paper describing it and found that there is this FleXgeo software you can use to compute and is convinced that you should at least give it a try. So you define your goals.</p>
+
+<hr />
+
+<h2 id="main-goal">Main goal</h2>
+
+<p>Our main goal is to characterize backbone dynamics of the C-terminal tail of Ubiquitin using differential geometry.</p>
+
+<hr />
+
+<h2 id="specific-goals">Specific goals</h2>
+
+<ol>
+<li>Compute differential geometry representation</li>
+<li>Plot the raw data</li>
+<li>Compute $d_{max}$ to quantify protein flexibility</li>
+<li>Check if there is an interesting clustering solution (well, just because is nice to know how to do).</li>
+</ol>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/basics/setup/" title="Setup everything"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/basics/computedg/" title="Compute differential geometry" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1546781276"></script>
+    <script src="/js/perfect-scrollbar.min.js?1546781276"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1546781276"></script>
+    <script src="/js/jquery.sticky.js?1546781276"></script>
+    <script src="/js/featherlight.min.js?1546781276"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1546781276"></script>
+    <script src="/js/highlight.pack.js?1546781276"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom.71422.js?1546781276"></script>
+    <script src="/js/learn.js?1546781276"></script>
+    <script src="/js/hugo-learn.js?1546781276"></script>
+
+    <link href="/mermaid/mermaid.css?1546781276" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1546781276"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    
+
+  </body>
+</html>

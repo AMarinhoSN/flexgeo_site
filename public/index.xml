@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FleXgeo documentation</title>
+    <link>/</link>
+    <description>Recent content on FleXgeo documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Credits</title>
+      <link>/credits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/credits/</guid>
+      <description> FleXgeo authors The FleXgeo was written by PhD. Antonio Marinho da Silva Neto and PhD Rinaldo Wander Montalvão
+Open Source FleXgeo development and usage would not be viable without the following free open source tools:
+ numpy hdbscan matplotlib seaborn  FleXgeo Documentation webpage This page is maintained by PhD Antonio Marinho and is built based on
+ Hugo Theme Learn Hugo  </description>
+    </item>
+    
+  </channel>
+</rss>

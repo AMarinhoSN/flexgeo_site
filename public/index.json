@@ -1,0 +1,71 @@
+[
+{
+	"uri": "/basics/",
+	"title": "Basics",
+	"tags": [],
+	"description": "",
+	"content": " STEP 0 First things first This is the documentation page of FleXgeo, this awesome software that let\u0026rsquo;s you compute and analyse proteins conformational ensembles using differential geometry magic. If you are looking for a way to do not need to superimpose structures anymore, this might be the solution you are looking for.\nWhat FleXgeo can do:\n Compute a protein backbone differential geometry descriptors, via a smooth curve representation of backbones. cluster protein conformations, via global clustering solution per residue based on its curvature and torsion distribution. quantify protein residues flexibility, via the computation of $d_{max}$ compare protein conformations to a reference structure, via the computation of euclidean distances on the curvature and torsion space.  First, did you read the FleXgeo paper? If not, I highly recommend you to check the awesome  1 paper bellow before proceed.\n “A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone\u0026rdquo;, PROTEINS: Structure, Function, and Bioinformatics, 2018\n This is a basic tutorial designed to be a quick tour on how to use FleXgeo, to achieve that we will reproduce Ubiquitin analyses presented on the FleXgeo paper. Ok, now that you carefully read the paper and is fully aware of how awesome it is, we can begin our differential geometry witchcraft.\n1: this judgement comes from a completely unbiased place and with no conflict of interest at all.\n "
+},
+{
+	"uri": "/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": " Installation 1. Download FleXgeo\nThe easiest way is simply run:\n$ git clone https://github.com/AMarinhoSN/FleXgeo.git  If you are not familiar with git clone, you can just download from FleXgeo github repository\n2. Install requirements\nTo run the analyses scripts you need Python 3 and you can install the required python libraries using pip3. You can install the python libraries directly on your default python environment using:\n$ pip3 install cython $ pip3 install -r /path/to/FleXgeo/requirements.txt  Another option is to create an specific FleXgeo python environment using virtualenv by:\n$ pip3 install virtualenv $ cd virtual_envs_location $ virtualenv flexgeo_env $ source flexgeo_env/bin/activate $ cd FLEXGEO_LOCATION $ pip3 install cython $ pip3 install -r requirements.txt  You also gonna need Lua interpreter to compute $d_{max}$. On Linux, you can install it by:\n$ sudo apt-get install luajit  If you want to access run FleXgeo easily on Linux terminal, just add alias flexgeo='/full/path/to/FleXgeo/bin/FleXgeo_[MY_OS]', at my \u0026ldquo;MY_OS\u0026rdquo; you can choose between \u0026lsquo;LINUX\u0026rsquo;, \u0026lsquo;MacOS_10.13.4\u0026rsquo; and \u0026lsquo;WIN_10_64\u0026rsquo;\nHere we assume you are a sane person and is working on a Linux environment. Everything should work similarly on MacOS and Windows, if you find any OS specific error (or of any other kind) feel free to check and create an issue at FleXgeo repository.\n "
+},
+{
+	"uri": "/quickguide/",
+	"title": "Quick guide",
+	"tags": [],
+	"description": "",
+	"content": "If you are just looking for some list of commands to run, don\u0026rsquo;t be ashamed, nobody will judge you. I know you just want the \u0026ldquo;how to\u0026rdquo;, but If you have no idea of \u0026ldquo;what is\u0026rdquo; and \u0026ldquo;why to\u0026rdquo; use FleXgeo, you should check FleXgeo paper and the Basic tutorial.\n Calculate Differential Geometry  $ /path/to/FleXgeo/bin/FleXgeo_[MY_OS] -pdb=ensemble.pdb [options]  FleXgeo accepts the following arguments:\n   OPTIONS DESCRIPTION DEFAULT     -pdb=[filename.pdb] Set input .pdb filename User must provide   -ncpus=[int] Set the number of cpus FleXgeo will use All cpus available   -isSingle Indicate if input pdb is a single conformation pdb FALSE   -outprfx=[prefix] Set the output files prefix to be used \u0026lsquo;Diffgeo_\u0026rsquo;     Plot xgeo data\n$ python3 /path/to/PlotFXgeoData.py DiffGeo_xgeo.csv  Calculate distance between all conformations and a reference conformation on the ensemble.\n$ python3.5 /path/to/FleXgeo/CalcEnsDistFromRef.py -in=XgeoObj.p  Calculate distance between all conformations and an external reference conformation\n$ python3.5 /path/to/FleXgeo/CalcEnsDistFromRef.py -in=XgeoObj.p -ext_ref=/path/to/ref_xgeo.csv  Calculate residues $d_{max}$\n$ luajit /path/to/FleXgeo/HistProc.lua $ python3.5 /path/to/FleXgeo/ComputeResDMax.py  Clustering conformations\n$ python3.5 /path/to/FleXgeo/GetResClusters.py -res ALL DiffGeo_xgeo.csv -min_pcluster .05  Write cluster pdbs\n$ python3.5 /path/to/FleXgeo/WriteClustersPDB.py cluster.clstr source.pdb res   "
+},
+{
+	"uri": "/basics/setup/",
+	"title": "Setup everything",
+	"tags": [],
+	"description": "",
+	"content": " SETUP EVERYTHING Follow the FleXgeo installation instructions\n"
+},
+{
+	"uri": "/basics/getdata/",
+	"title": "Define analyses objectives",
+	"tags": [],
+	"description": "",
+	"content": " On this basic tutorial, we will reproduce the analyses of the Ubiquitin ensemble presented at FleXgeo paper. The Ubiquitin (Ubq) is a good example of a regular rigid globular protein with a very flexible N-terminal tail. This is a fairly simple and common analyses scenario on protein structural biology projects, therefore a good place to start. As on any data analyses scenario, before we start to do anything at all let\u0026rsquo;s define as objectively as possible our questions and goals.\nWhat we want to know? Flexibility is an important aspect of protein function and let\u0026rsquo;s assume that for some reason you are interest on Ubq N-terminal tail dynamics. Maybe you found experimental evidence that mutations on this region affects Ubq binding capabilities and want to know how flexible it actually is and which residues are more important.\nWhat data do we have? Fortunately, there is an Ubq conformational ensemble determined based on NMR-restrained metadynamics available at Protein Data Bank (2LJ5). This ensemble is composed of 300 conformations which best fit the Residual Dipolar Coupling data obtained. This data can provide a baseline to compare how the tail behave under\nAlthough not necessary to follow this tutorial, but you should check the paper describing how this ensemble was obtained\n Why use differential geometry? This is an common scenario in which the decision of how to superimpose the structure is crucial to the measurements. Of course this is true for atomic coordinates, but there is also the possibility of use $\\phi-\\psi$ angles or define some set of collective variables. But for the porpouse of this tutorial, let\u0026rsquo;s assume you try those and for some reason did not trust the results. Maybe you are not sure if your collective variables are capturing every dynamics aspect you need, or the periodicity of $\\phi-\\psi$ are making things more complicated in the data analyses. So do you wonder if it would be nice to have an intuitive mathematical representation of the protein conformational space, some friend told you about the advantages of DG representation, you checked a awesome paper describing it and found that there is this FleXgeo software you can use to compute and is convinced that you should at least give it a try. So you define your goals.\nMain goal Our main goal is to characterize backbone dynamics of the C-terminal tail of Ubiquitin using differential geometry.\nSpecific goals  Compute differential geometry representation Plot the raw data Compute $d_{max}$ to quantify protein flexibility Check if there is an interesting clustering solution (well, just because is nice to know how to do).  "
+},
+{
+	"uri": "/basics/computedg/",
+	"title": "Compute differential geometry",
+	"tags": [],
+	"description": "",
+	"content": " Every analyses using DG can be separated in two phases:\n Compute differential geometry descriptors descriptor analyses  To get 1. done, just run:\n$ /path/to/FleXgeo/bin/FleXgeo_[MY_OS] -pdb=/path/to/2LJ5.pdb  This will generate a bunch of output files and it should not take long to finish the computation.\nWhat are the output files? The output files are:\n Diffgeo_xgeo.csv : contains the calculated differential geometry descriptors of the input ensemble. Diffgeo_NORM.csv : Same values of \u0026ldquo;Diffgeo_xgeo,csv\u0026rdquo; but normalized to [0,1]. Diffgeo_MEAN.csv: Mean values of FleXgeo descriptors per residue Diffgeo_STD.csv: Standard deviation of FleXgeo descriptors per residue Diffgeo_VAR.csv: Variation of FleXgeo descriptors per residue DiffgeoStat.lua : The histogram bins position and value of each descriptor for each residue.  The most important file is the Diffgeo_xgeo.csv, among other general information extract from the PDB it contain the curvature ($\\kappa$), torsion( $\\tau$ ), arc-lenght( $s$ ) and writhing number($w$) per residue. The other \u0026ldquo;diffgeo*.csv\u0026rdquo; are self explanatory and the DiffgeoStat.lua is gonna be used on the $d{max}$ computation.\nFor this tutorial, we will focus only on the $\\kappa$ and $\\tau$, more details about $s$ and $w$ will be added in the future.\nWhat did FleXgeo have done? [DG computation]\nWhy differential geometry? [DG quick explanation]\n"
+},
+{
+	"uri": "/",
+	"title": "",
+	"tags": [],
+	"description": "",
+	"content": " FleXgeo FleXgeo is a software package design to compute and analyze a protein conformational ensembles using a differential geometry representation of protein backbone. The current available version is the prototype software written to compute all analyses presented at:\n “A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone\u0026rdquo;, PROTEINS: Structure, Function, and Bioinformatics, 2018\n While is fully functional, keep in mind that this prototype was written to fulfill the authors own selfish desires. We try our best to make it usable to others outside our group, but there are a lot to improve on different aspects.\nMain Features Currently, there are ready to use scripts to:\n cluster protein conformations, via global clustering solution per residue based on its curvature and torsion distribution. quantify protein residues flexibility, via the computation of $d_{max}$ compare protein conformations to a reference structure, via the computation of euclidean distances on the curvature and torsion space.  FleXgeo code was written by PhD. Antonio Marinho da Silva Neto and PhD. Rinaldo Wander Montalvao.\nFleXgeo is under development and more features beyond the presented in the paper are planned to be added. If you want to be informed right away when a new feature is added you can star FleXgeo repository on github or simply check this page from time to time.\n Here you can find:\n Installation Instructions A basic usage manual Tutorials  Teach me the ways of FleXgeo If you want a step by step guide, check The Basics\nI know what I am doing If you know what you are doing and just want some quick and dirt command list to run, check the Quick and dirty guide.\nI want to speak to the manager Do you follow the instructions here and find unexpected errors, bugs, or have suggestion on how to make FleXgeo great again or, even better, simply want to express how grateful you are for this awesome software, please feel free to contact Antonio Marinho at a.marinho@cent.uw.edu.pl or use the FleXgeo github page and create a new issue.\n"
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/credits/",
+	"title": "Credits",
+	"tags": [],
+	"description": "",
+	"content": " FleXgeo authors The FleXgeo was written by PhD. Antonio Marinho da Silva Neto and PhD Rinaldo Wander Montalvão\nOpen Source FleXgeo development and usage would not be viable without the following free open source tools:\n numpy hdbscan matplotlib seaborn  FleXgeo Documentation webpage This page is maintained by PhD Antonio Marinho and is built based on\n Hugo Theme Learn Hugo  "
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
