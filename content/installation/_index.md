@@ -27,7 +27,7 @@ To run the analyses scripts you need [Python 3](https://www.python.org/download/
 $ pip3 install cython
 $ pip3 install -r /path/to/FleXgeo/requirements.txt  
 ```
-  Another option is to create an specific FleXgeo python environment using *virtualenv* by:
+  Another option is to create a specific FleXgeo python environment using *virtualenv* by:
 
 ```{bash}
 $ pip3 install virtualenv

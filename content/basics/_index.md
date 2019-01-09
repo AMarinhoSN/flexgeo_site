@@ -24,8 +24,6 @@ What FleXgeo can do:
  * **quantify protein residues flexibility**, via the computation of $d_{max}$
  * **compare protein conformations to a reference structure**, via the computation of euclidean distances on the curvature and torsion space
 
-
-
 Ok, now that you carefully read the paper, we can begin our differential geometry witchcraft.
 
 

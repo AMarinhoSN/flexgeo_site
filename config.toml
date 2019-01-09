@@ -43,7 +43,7 @@ latexDashes = true
   # Order sections in menu by "weight" or "title". Default to "weight"
   ordersectionsby = "weight"
   # Change default color scheme with a variant one. Can be "red", "blue", "green".
-  themeVariant = ""
+  themeVariant = "blue"
 
 [[Languages.en.menu.shortcuts]]
   name = "<i class='fas fa-fw fa-bullhorn'></i> Credits"

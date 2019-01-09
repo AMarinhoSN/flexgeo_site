@@ -43,7 +43,7 @@ The output files are:
 *  Diffgeo_VAR.csv: Variation of FleXgeo descriptors per residue
 *  DiffgeoStat.lua : The histogram bins position and value of each descriptor for each residue.
 
-The most important file is the **Diffgeo_xgeo.csv**, among other general information extract from the PDB it contain the curvature ($\kappa$), torsion( $\tau$ ), arc-lenght( $s$ ) and writhing number($w$) per residue. The other "diffgeo_*.csv" are self explanatory and the *DiffgeoStat.lua* is gonna be used on the $d_{max}$ computation.  
+The most important file is the **Diffgeo_xgeo.csv**, among other general information extract from the PDB it contain the curvature ($\kappa$), torsion( $\tau$ ), arc-lenght( $s$ ) and writhing number($w$) per residue. The other .csv are self explanatory and the DiffgeoStat.lua is gonna be used on the $d_{max}$ computation.  
 
 For this tutorial, we will focus only on the $\kappa$ and $\tau$, more details about $s$ and $w$ will be added in the future.
 
@@ -55,11 +55,14 @@ In a (pseudo-code) nutshell,
 ```{python}
 for conformation in ensemble:
   > get carbon alpha coordinates xyz
-  > get curve backbone representation via cubic splice interpolation
+  > generate curve backbone representation via cubic splice interpolation
 
-    for residue in conformation:
-      > compute descriptors
+    for residue_x in conformation:
+      > compute curvature and torsion of the points of the curve corresponding to residue_x
       > store results
-
 > compute histogram
+> write output files
 ```
+[add a diagram - with nice pymol pics -  explaining how its done =D]
+
+Now we have our data, so let's plot and discuss its meaning.
