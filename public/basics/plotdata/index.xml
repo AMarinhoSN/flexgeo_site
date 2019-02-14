@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Plot and understand the data on FleXgeo documentation</title>
+    <link>/basics/plotdata/</link>
+    <description>Recent content in Plot and understand the data on FleXgeo documentation</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 29 Dec 2018 17:44:21 +0100</lastBuildDate>
+    
+	<atom:link href="/basics/plotdata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

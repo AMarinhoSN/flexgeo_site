@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.54.0" />
     <meta name="description" content="FleXgeo documentation page">
 <meta name="author" content="AMarinhoSN">
 
@@ -12,17 +12,19 @@
     <title> :: FleXgeo documentation</title>
 
     
-    <link href="/css/nucleus.css?1546853063" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1546853063" rel="stylesheet">
-    <link href="/css/hybrid.css?1546853063" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1546853063" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1546853063" rel="stylesheet">
-    <link href="/css/auto-complete.css?1546853063" rel="stylesheet">
-    <link href="/css/theme.css?1546853063" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1546853063" rel="stylesheet">
+    <link href="/css/nucleus.css?1550161130" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1550161130" rel="stylesheet">
+    <link href="/css/hybrid.css?1550161130" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1550161130" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1550161130" rel="stylesheet">
+    <link href="/css/auto-complete.css?1550161130" rel="stylesheet">
+    <link href="/css/theme.css?1550161130" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1550161130" rel="stylesheet">
+    
+      <link href="/css/theme-blue.css?1550161130" rel="stylesheet">
     
 
-    <script src="/js/jquery-2.x.min.js?1546853063"></script>
+    <script src="/js/jquery-2.x.min.js?1550161130"></script>
 
     <style type="text/css">
       :root #header + #content > #left > #rlblock_left{
@@ -68,7 +70,9 @@
 
   <div id="header-wrapper">
     <div id="header">
-      <h1><span style="color:#F0FFFF;"><span style="font-family:verdana,geneva,sans-serif;">FleXgeo</span></span></h1>
+      <a id="logo" href="/">
+<h2><span style="color:#F0FFFF;"><span style="font-family:verdana,geneva,sans-serif;">FleXgeo</span></span></h2>
+</a>
 
     </div>
     
@@ -78,14 +82,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1546853063"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1546853063"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1550161130"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1550161130"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1546853063"></script>
+<script type="text/javascript" src="/js/search.js?1550161130"></script>
 
     
   </div>
@@ -130,13 +134,13 @@
  
   
     
-    <li data-nav-id="/basics/setup/" title="Setup everything" class="dd-item 
+    <li data-nav-id="/basics/intro/" title="Introduction" class="dd-item 
         
         
         
         ">
-      <a href="/basics/setup/">
-          <b>1.1 </b>Setup everything
+      <a href="/basics/intro/">
+          <b>1.1 </b>Introduction
           
             <i class="fas read-icon"></i>
           
@@ -156,13 +160,13 @@
  
   
     
-    <li data-nav-id="/basics/getdata/" title="Define analyses objectives" class="dd-item 
+    <li data-nav-id="/basics/setup/" title="Setup everything" class="dd-item 
         
         
         
         ">
-      <a href="/basics/getdata/">
-          <b>1.2 </b>Define analyses objectives
+      <a href="/basics/setup/">
+          <b>1.2 </b>Setup everything
           
             <i class="fas read-icon"></i>
           
@@ -189,6 +193,32 @@
         ">
       <a href="/basics/computedg/">
           <b>1.3 </b>Compute differential geometry
+          
+            <i class="fas read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+    <li data-nav-id="/basics/plotdata/" title="Plot and understand the data" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/basics/plotdata/">
+          <b>1.4 </b>Plot and understand the data
           
             <i class="fas read-icon"></i>
           
@@ -321,19 +351,28 @@
 
 <h1 id="flexgeo">FleXgeo</h1>
 
-<p>FleXgeo is a software package design to compute and analyze a protein conformational ensembles using a differential geometry representation of protein backbone. The current available version is the prototype software written to compute all analyses presented at:</p>
+<p>FleXgeo is a software package design to compute and analyse protein conformational ensembles using a differential geometry (DG) representation of protein backbone. The current available version is the prototype software written to compute all analyses presented at:</p>
 
 <blockquote>
 <p><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652" target="_blank">“A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone&rdquo;, PROTEINS: Structure, Function, and Bioinformatics, 2018</a></p>
 </blockquote>
 
-<p>While is fully functional, keep in mind that this prototype was written to fulfill the authors own selfish desires. We try our best to make it usable to others outside our group, but there are a lot to improve on different aspects.</p>
+<p>While fully functional, keep in mind that this prototype was written to fulfil the authors own selfish desires. We try our best to make it usable to others outside our group, but for sure there are a lot to improve. If you have any suggestions, feel free to contact Antonio Marinho at <code>a.marinho@cent.uw.edu.pl</code>.</p>
+
+<p>Here you can find:</p>
+
+<ul>
+<li><a href="./installation/">Installation instructions</a></li>
+<li><a href="./basic/">A basic usage tutorial</a></li>
+<li><a href="./quickguide/">Quick command list</a></li>
+</ul>
 
 <h2 id="main-features">Main Features</h2>
 
-<p>Currently, there are ready to use scripts to:</p>
+<p>Currently, FleXgeo is able to:</p>
 
 <ul>
+<li><strong>Compute backbone DG</strong>, compute differential geometry descriptors of protein conformations backbones.</li>
 <li><strong>cluster protein conformations</strong>, via global clustering solution per residue based on its curvature and torsion distribution.</li>
 <li><strong>quantify protein residues flexibility</strong>, via the computation of $d_{max}$</li>
 <li><strong>compare protein conformations to a reference structure</strong>, via the computation of euclidean distances on the curvature and torsion space.</li>
@@ -345,25 +384,37 @@
 </div>
 
 
-<p>Here you can find:</p>
+<h2 id="tutorials">Tutorials</h2>
 
-<ul>
-<li>Installation Instructions</li>
-<li>A basic usage manual</li>
-<li>Tutorials</li>
-</ul>
+<p>If you want a step by step guide, check the <a href="./basics/"><strong>Basic Tutorial</strong></a>. If you know what you are doing and just want some quick command list to run, check the <a href="./quickguide/"><strong>Quick and dirty guide</strong></a>.</p>
 
-<h2 id="teach-me-the-ways-of-flexgeo">Teach me the ways of FleXgeo</h2>
-
-<p>If you want a step by step guide, check <a href="./basics/">The Basics</a></p>
-
-<h2 id="i-know-what-i-am-doing">I know what I am doing</h2>
-
-<p>If you know what you are doing and just want some quick and dirt command list to run, check the <strong>Quick and dirty guide</strong>.</p>
-
-<h2 id="i-want-to-speak-to-the-manager">I want to speak to the manager</h2>
+<h2 id="bugs-suggestions-comments">Bugs/Suggestions/Comments</h2>
 
 <p>Do you follow the instructions here and find unexpected errors, bugs, or have suggestion on how to make FleXgeo great again or, even better, simply want to express how grateful you are for this awesome software, please feel free to contact Antonio Marinho at <code>a.marinho@cent.uw.edu.pl</code> or use the <a href="https://github.com/AMarinhoSN/FleXgeo" target="_blank">FleXgeo github page</a> and create a new issue.</p>
+
+<h2 id="how-to-cite">How to cite?</h2>
+
+<p>If you published results produced by FleXgeo, please cite:</p>
+
+<blockquote>
+<p>Marinho da Silva Neto, Antonio, et al. ‘A Superposition Free Method for Protein Conformational Ensemble Analyses and Local Clustering Based on a Differential Geometry Representation of Backbone’. Proteins: Structure, Function, and Bioinformatics, Dec. 2018. Crossref, doi:10.1002/prot.25652.</p>
+</blockquote>
+
+<p>A bibtex entry:</p>
+
+<pre><code>@article{amarinho2018,
+	title = {A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone},
+	issn = {08873585},
+	url = {http://doi.wiley.com/10.1002/prot.25652},
+	doi = {10.1002/prot.25652},
+	language = {en},
+	urldate = {2019-01-02TZ},
+	journal = {Proteins: Structure, Function, and Bioinformatics},
+	author = {Marinho da Silva Neto, Antonio and Silva, Samuel Reghim and Vendruscolo, Michele and Camilloni, Carlo and Montalvao, Rinaldo Wander},
+	month = dec,
+	year = {2018}
+}
+</code></pre>
 	
   
         
@@ -409,6 +460,22 @@
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -513,20 +580,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1546853063"></script>
-    <script src="/js/perfect-scrollbar.min.js?1546853063"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1546853063"></script>
-    <script src="/js/jquery.sticky.js?1546853063"></script>
-    <script src="/js/featherlight.min.js?1546853063"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1546853063"></script>
-    <script src="/js/highlight.pack.js?1546853063"></script>
+    <script src="/js/clipboard.min.js?1550161130"></script>
+    <script src="/js/perfect-scrollbar.min.js?1550161130"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1550161130"></script>
+    <script src="/js/jquery.sticky.js?1550161130"></script>
+    <script src="/js/featherlight.min.js?1550161130"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1550161130"></script>
+    <script src="/js/highlight.pack.js?1550161130"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom.71422.js?1546853063"></script>
-    <script src="/js/learn.js?1546853063"></script>
-    <script src="/js/hugo-learn.js?1546853063"></script>
+    <script src="/js/modernizr.custom.71422.js?1550161130"></script>
+    <script src="/js/learn.js?1550161130"></script>
+    <script src="/js/hugo-learn.js?1550161130"></script>
 
-    <link href="/mermaid/mermaid.css?1546853063" type="text/css" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1546853063"></script>
+    <link href="/mermaid/mermaid.css?1550161130" type="text/css" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1550161130"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

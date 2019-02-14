@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Credits :: FleXgeo documentation</title>
+    <title>Plot and understand the data :: FleXgeo documentation</title>
 
     
     <link href="/css/nucleus.css?1550161130" rel="stylesheet">
@@ -63,7 +63,7 @@
 </script>
 
   </head>
-  <body class="" data-url="/credits/">
+  <body class="" data-url="/basics/plotdata/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -106,7 +106,7 @@
   
     
     <li data-nav-id="/basics/" title="Basics" class="dd-item 
-        
+        parent
         
         
         ">
@@ -213,8 +213,8 @@
   
     
     <li data-nav-id="/basics/plotdata/" title="Plot and understand the data" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/basics/plotdata/">
@@ -346,13 +346,37 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
-                   Credits
+                   Plot and understand the data
                  
                   </span>
                 </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#so-what-does-that-mean">So what does that mean?</a>
+<ul>
+<li>
+<ul>
+<li><a href="#framing-of-a-curve">framing of a curve</a></li>
+<li><a href="#defining-kappa-and-tau">defining $\kappa$ and $\tau$</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#what-about-the-plot">What about the plot?</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
                 
               </div>
             </div>
@@ -361,7 +385,7 @@
         
         <div id="body-inner">
           
-            <h1>Credits</h1>
+            <h1>Plot and understand the data</h1>
           
 
         
@@ -369,35 +393,59 @@
 
 
 
-<h2 id="flexgeo-authors">FleXgeo authors</h2>
+<p>Now we have the data computed, so the first thing to do is check how it looks like. You can plot the data from &lsquo;Diffgeo_xgeo.csv&rsquo; using any software or script you like, but on FleXgeo you find a script to generate some plots and you can run it using:</p>
 
-<p>The FleXgeo was written by <a href="https://amarinhosn.github.io/" target="_blank">PhD. Antonio Marinho da Silva Neto</a> and PhD Rinaldo Wander Montalvão</p>
+<pre><code class="language-bash">$ python3 /path/to/FleXgeo/PlotFXgeoData.py DiffGeo_xgeo.csv
+</code></pre>
 
-<h2 id="open-source">Open Source</h2>
+<p>This script will generate the plot bellow</p>
 
-<p>FleXgeo development and usage would not be viable without the following free open source tools:</p>
+<p><img src="./KTrawData.png?width=50pc" alt="plot" /></p>
 
-<ul>
-<li><a href="http://www.numpy.org/" target="_blank">numpy</a></li>
-<li><a href="https://hdbscan.readthedocs.io/en/latest/how_hdbscan_works.html" target="_blank">hdbscan</a></li>
-<li><a href="https://matplotlib.org/" target="_blank">matplotlib</a></li>
-<li><a href="https://seaborn.pydata.org/" target="_blank">seaborn</a></li>
-</ul>
+<hr />
 
-<h2 id="flexgeo-documentation-webpage">FleXgeo Documentation webpage</h2>
+<h2 id="so-what-does-that-mean">So what does that mean?</h2>
 
-<p>This page is maintained by PhD Antonio Marinho and is built based on</p>
+<p>The plot might be not very informative at first glance, but to interpret it first we need to understand the meaning of curvature, $\kappa$, and torsion, $\tau$, values. The <a href="https://en.wikipedia.org/wiki/Differential_geometry_of_curves" target="_blank">wikipedia article on differential geometry of spatial curves</a> is a very decent introduction which also include the mathematics behind it and you should check it, but for this tutorial let&rsquo;s try to keep it brief and simple. To understand what $\kappa$ and $\tau$ actually means, first we need to understand how such quantities are defined and they are defined based on the <strong>framing of a curve</strong>.</p>
 
-<ul>
-<li><a href="https://github.com/matcornic/hugo-theme-learn" target="_blank">Hugo Theme Learn</a></li>
-<li><a href="https://gohugo.io/" target="_blank">Hugo</a></li>
-</ul>
+<h4 id="framing-of-a-curve">framing of a curve</h4>
+
+<p>The framing of a curve means we need to define a set of vectors that can be computed for each point along the regular spatial curve, $r$, and by monitoring how such set of vectors changes along such curve characterize its shape. The &lsquo;along the curve&rsquo; part can be more objectively specified by the arc-length, $s$, as $r$ is just a function that map some values on the interval $I$, we can parametrize $\vec{r}$ as a function of $s$ or, as mathematicians like to call it,
+$$ r : I \rightarrow R^{3} $$
+$$\vec{r}(s) : I \rightarrow R^{3}$$.</p>
+
+<p>The standard choice for framing a curve is to use <a href="https://en.wikipedia.org/wiki/Frenet%E2%80%93Serret_formulas" target="_blank">the frenet-serret frame</a>, which defines 3 unit vectors: tangent ($\vec{T}$), normal($\vec{N}$) and binormal($\vec{B}$) unit vectors). If the analysed curve, $\vec{r}(s)$ represents a particle trajectory, the tangent vector will always point in the direction of the motion of the particle and the binormal vector would always point in the &ldquo;up&rdquo; direction from the particle frame of reference, check the animation.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/1/14/Frenet-Serret-frame_along_Vivani-curve.gif" alt="fs-frame" /></p>
+
+<p>Now imagine that this particle just move in a straight line trajectory without any rotational motion. For such case the, $\vec{T}$ and $\vec{B}$ will be constant. On the other hand, if the particle moves on a non straight line trajectory but keep in the exact same plane, $\vec{T}$ will change while $d\vec{B}$ will still be constant. Considering these features, is possible tu use $\vec{T}$ and $\vec{B}$ to define quantities that measures how much a given point in a curve deviates from a straight line and from a plane.</p>
+
+<h4 id="defining-kappa-and-tau">defining $\kappa$ and $\tau$</h4>
+
+<p>Let&rsquo;s first start with <strong>curvature</strong>, $\kappa$. We can define $\kappa$ as a measurement of how much a point in a given curve deviates from straight line by considering as a measurement of how much $\vec{T}$ changes along the curve by:
+$$
+\kappa = | \vec{\kappa}(s) | = | \frac{d\vec{T}}{ds} |
+$$</p>
+
+<p>if $\kappa = 0$ for a given point $t$, then the curve will be a perfect straight line at $t$. As higher the $\kappa$ values, the higher will be the change of $\vec{T}$ at the vicinity of $t$. Therefore, if a $\kappa$ spike at point $t$ appears in your curve, this means that at point $t$ there is a abrupt change in the direction of the curve. Similarly, the same rationale can be applied to planes by defining the <strong>Torsion</strong>, $\tau$, as
+$$
+\tau = | \vec{\tau} | = | \frac{d\vec{B}}{ds} |
+$$</p>
+
+<p>If a $\tau$ spike at point $t$ appears in your curve, this means that at point $t$ there is an abrupt change in the plane in the vicinity of $t$. With those to descriptors one can uniquely characterize any 3D regular curve via $\kappa$ and $\tau$ as a function of $s$. For instance, check how the $\kappa$ and $\tau$ values of a Torus knots relate to its Frenet-Serret frame in the animation bellow.</p>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Torus-Knot_uebereinander_animated.gif" alt="gif" /></p>
+
+<p>With that in mind you should be able to look to the plot generated and have an idea of what it means.</p>
+
+<h2 id="what-about-the-plot">What about the plot?</h2>
+
+<p>The plot generate express the $\kappa$ and $\tau$ values per residue $t$ for all conformations of the ensemble. Each line of the plot is the representation of a single conformation and how much a residue change its &ldquo;signature&rdquo; give you an idea of its flexibility and what is happening. For instance, just by looking at the plot you can claim that residues 24 to 34 are a stable helix, that the last residues are more flexible and the region around residue 10 present a higher flexibility than the rest of the protein and residues 36 and 60 are stable points of inflection in the backbone. Look at the ensemble on Pymol and check if our interpretation make sense ;).</p>
 
 
 <footer class=" footline" >
 	
 </footer>
-
 
         
         </div> 
@@ -430,8 +478,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -447,6 +493,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -496,6 +545,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -514,6 +564,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -551,8 +604,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/basics/computedg/" title="Compute differential geometry"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/basics/" title="Basics" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -583,4 +638,3 @@
 
   </body>
 </html>
-

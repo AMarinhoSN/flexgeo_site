@@ -9,7 +9,7 @@
 
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link rel="icon" href="/images/favicon.png" type="image/x-icon" />
-    <title>Basics :: FleXgeo documentation</title>
+    <title>Introduction :: FleXgeo documentation</title>
 
     
     <link href="/css/nucleus.css?1550161129" rel="stylesheet">
@@ -63,7 +63,7 @@
 </script>
 
   </head>
-  <body class="" data-url="/basics/">
+  <body class="" data-url="/basics/intro/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -107,7 +107,7 @@
     
     <li data-nav-id="/basics/" title="Basics" class="dd-item 
         parent
-        active
+        
         
         ">
       <a href="/basics/">
@@ -135,8 +135,8 @@
   
     
     <li data-nav-id="/basics/intro/" title="Introduction" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/basics/intro/">
@@ -346,22 +346,44 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
-                   Basics
+                   Introduction
                  
                   </span>
                 </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#what-we-want-to-know">What we want to know?</a></li>
+<li><a href="#what-data-do-we-have">What data do we have?</a></li>
+<li><a href="#the-common-approach">The common approach</a></li>
+<li><a href="#what-is-the-logic-behind-this-dg-representation">What is the logic behind this DG representation?</a></li>
+<li><a href="#how-this-dg-witchcraft-avoids-the-superposition-problem">How this DG witchcraft avoids the superposition problem?</a></li>
+<li><a href="#main-goal">Main goal</a></li>
+<li><a href="#specific-goals">Specific goals</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
                 
               </div>
             </div>
             
 
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>Introduction</h1>
           
 
         
@@ -369,41 +391,92 @@
 
 
 
-<h3 id="step-0">STEP 0</h3>
+<p>On this basic tutorial, we will reproduce the analyses of the Ubiquitin ensemble presented at FleXgeo paper. The Ubiquitin (Ubq) is a good example of a <strong>regular rigid globular protein with a flexible C-terminal tail</strong>. This is a fairly simple and common analyses scenario on protein structural biology projects, therefore a good place to start. As on any data analyses scenario, before we start to do anything at all let&rsquo;s first understand our general questions, goals and the &ldquo;what/why/how&rdquo; differential geometry can be useful.</p>
 
-<h1 id="first-things-first">First things first</h1>
+<hr />
 
-<p>First of all, did you read the FleXgeo paper?
-If not, I highly recommend you to check the awesome <sup><a href="#footnote1">1</a></sup> paper bellow before proceed.</p>
+<h2 id="what-we-want-to-know">What we want to know?</h2>
 
-<blockquote>
-<p><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652" target="_blank">“A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone&rdquo;, PROTEINS: Structure, Function, and Bioinformatics, 2018</a></p>
-</blockquote>
+<p>Flexibility is an important aspect of protein function and let&rsquo;s assume that for some reason you are interest on Ubq C-terminal tail dynamics. Maybe you found experimental evidence that mutations on this region affects Ubq binding capabilities and want to know how flexible it actually is and which residues are more important.</p>
 
-<p>This is a basic tutorial designed to be a quick tour on how to use FleXgeo, to achieve that we will reproduce Ubiquitin analyses presented on the FleXgeo paper.</p>
+<hr />
 
-<p>What FleXgeo can do:</p>
+<h2 id="what-data-do-we-have">What data do we have?</h2>
 
-<ul>
-<li><strong>Compute a protein backbone differential geometry descriptors</strong>, via a smooth curve representation of backbones</li>
-<li><strong>cluster protein conformations</strong>, via global clustering solution per residue based on its curvature and torsion distribution</li>
-<li><strong>quantify protein residues flexibility</strong>, via the computation of $d_{max}$</li>
-<li><strong>compare protein conformations to a reference structure</strong>, via the computation of euclidean distances on the curvature and torsion space</li>
-</ul>
+<p>Fortunately, there is an Ubq conformational ensemble obtained based on NMR-restrained metadynamics available at Protein Data Bank (<a href="https://www.rcsb.org/structure/2LJ5" target="_blank">2LJ5</a>). This ensemble is a set of 300 conformations which together best explain a set of Residual Dipolar Coupling data obtained from experiments. Imagined that you can get the same data from these hypothetical Ubq mutants, this 2LJ5 ensemble can provide a baseline to compare how the tail behave.</p>
 
-<p>Ok, now that you carefully read the paper, we can begin our differential geometry witchcraft.</p>
-
-<div class="notices note" ><p><a name="footnote1">1</a>: this judgement comes from a completely unbiased place and with no conflict of interest at all.</p>
+<div class="notices note" ><p>Although not necessary to follow this tutorial, you should check <a href="https://link.springer.com/article/10.1007%2Fs10858-012-9644-3" target="_blank">the paper describing how this ensemble was obtained</a>.</p>
 </div>
 
+
+<hr />
+
+<h2 id="the-common-approach">The common approach</h2>
+
+<p>The common approach for this particular problem could be align the conformations and compute the RMSF (Root Mean Square Fluctuation). This will give you some number and you would be able to say something like &ldquo;the C-terminal tail presents X angstroms of RMSF therefore &hellip;&rdquo;, if X is higher than, let&rsquo;s say, 3 angstroms you would conclude that is flexible and use this number as a base line and compare with new data. Note that this hypothetical analyses scenario relies heavily on the decision made on how to superimpose the structure. For instance, if only the first three residues of the tail were used for the alignment and one just rely on the values of RMSF to judge flexibility, RMSF would suggest that the whole protein is very flexible with the exception of those 3 residues. Of course, this is an absurd example and only someone that does not understand what the RMSF quantity means would came to such conclusions, but you would be surprise on how often similar misinterpretation can happen on less obvious cases.</p>
+
+<p>Imagined that you try different superposition solution for this Ubq C-terminal tail, but you are not confident that those RMSFs values are meaningful. Then you realize you will have to compare it with new data for the mutations and small differences in the superposition solution could be a problem during the interpretation. This problem is true for atomic coordinates, but there is also the possibility of use $\phi-\psi$ angles or define some set of collective variables. Each of those options have some limitations, some of them were discussed in the <a href="https://onlinelibrary.wiley.com/doi/10.1002/prot.25652" target="_blank">FleXgeo paper</a>, but for this tutorial let&rsquo;s assume you try those and for some reason did not trust the results. Maybe you are not sure if your collective variables are capturing the fundamental dynamics aspect, the periodicity of $\phi-\psi$ are making things more complicated in the data analyses or you simply would like to look at your data from a different perspective analyses. Like any normal regular human being, you find yourself thinking during the day:</p>
+
+<blockquote>
+<p>&ldquo;<strong>The world would be much better if we have an intuitive mathematical representation of the protein conformational space</strong>&rdquo;.</p>
+</blockquote>
+
+<p>Some friend told you about hearing some crazy rumour about some ancient protein differential geometry witchcraft that avoid the structural superposition problem. You google a bit, you check some awesome papers describing it and find out that this mathematical representation may help you solve your problem. Then you find that there is this FleXgeo software you can use to compute it and is convinced that you should at least give it a try.</p>
+
+<hr />
+
+<h2 id="what-is-the-logic-behind-this-dg-representation">What is the logic behind this DG representation?</h2>
+
+<p>The rationale behind DG-representation implemented on FleXgeo is quite simple:</p>
+
+<ol>
+<li>One can represent protein backbones as regular 3D spatial curves</li>
+<li>Regular 3D patial curves can be uniquely characterized by curvature, $\kappa$, and torsion, $\tau$ as a function of arc-length, $s$</li>
+<li>$\kappa$ and $\tau$ can be used to compare regular 3D spatial curves.</li>
+</ol>
+
+<p>Considering 1), 2) and 3), therefore</p>
+
+<blockquote>
+<p><strong>Protein backbones can be compared solely based on $\kappa$ and $\tau$ values.</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="how-this-dg-witchcraft-avoids-the-superposition-problem">How this DG witchcraft avoids the superposition problem?</h2>
+
+<p>In a nutshell, the DG-based representation of protein backbone have the advantage of avoiding the superposition problem because the descriptors are absolute in space. This specific property rely on the <a href="https://en.wikipedia.org/wiki/Fundamental_theorem_of_curves" target="_blank"><strong>Fundamental Theorem of Space Curves</strong></a>, which state that every regular spatial 3D-curve can be uniquely characterized by its curvature, $\kappa$, and $\tau$ as a function of arc length, $s$. <strong>The mathematical proof of this theorem is not trivial, however its meaning is intuitive</strong>. Imagine that one have two equal semi-rigid straight wires. Only two kind of distortions are possible to be imposed on such wires, 1) to curve it and/or 2) to torsion it in a given set of points. If wire $A$ get a specific sequence of distortions operations and this exact same operations is also applied to wire $B$, both wires will end up with the exact same final shape. Therefore, one could compare such wires just by analysing the specific set of distortion applied to each one, without the need to <em>superimpose</em> such wires.</p>
+
+<p>Another way to look into this representation is to think how geometry tends to represent shapes using the minimum amount of descriptors as possible. For instance, circles can be describe solely by its radius, if two circles have different radius you know which one is bigger than the other without the need to superimposition. Similarly, 3D spatial curves can be uniquely specified by $\kappa$ and $\tau$ as a function of $s$. Don&rsquo;t worry if all of this sounds too abstract for you, along this tutorial we will present in a (hopefully) intuitive and easy to understand way what all of this actually means and how to interpret its meaning on the structural biology analyses context.</p>
+
+<p>Now that you have a at least general notion of what this representation is all about, we can define our goals.</p>
+
+<div class="notices note" ><p>A more detailed description of the math behind the method is available at <a href="https://onlinelibrary.wiley.com/doi/10.1002/prot.25652" target="_blank">FleXgeo paper</a>, but a section devoted for the math-hardcore structural biologist (that we know you are) will be added to the website in the future.</p>
+</div>
+
+
+<hr />
+
+<h2 id="main-goal">Main goal</h2>
+
+<p>Characterize and explore backbone dynamics of the C-terminal tail of Ubiquitin using differential geometry.</p>
+
+<hr />
+
+<h2 id="specific-goals">Specific goals</h2>
+
+<ol>
+<li>Compute differential geometry representation</li>
+<li>Plot the raw data</li>
+<li>Compute $d_{max}$ to quantify protein flexibility</li>
+<li>Check if there is an interesting clustering solution (SPOILER ALERT: there is not, but is nice to know how to do it)</li>
+</ol>
 
 
 <footer class=" footline" >
 	
 </footer>
 
-        
-            </div> 
         
         </div> 
         
@@ -451,8 +524,6 @@ If not, I highly recommend you to check the awesome <sup><a href="#footnote1">1<
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -469,6 +540,9 @@ If not, I highly recommend you to check the awesome <sup><a href="#footnote1">1<
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -557,10 +631,10 @@ If not, I highly recommend you to check the awesome <sup><a href="#footnote1">1<
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title=""> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/basics/" title="Basics"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/basics/intro/" title="Introduction" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/basics/setup/" title="Setup everything" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

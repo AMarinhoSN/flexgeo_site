@@ -8,12 +8,12 @@
   </url>
   
   <url>
-    <loc>/installation/</loc>
+    <loc>/basics/intro/</loc>
     <lastmod>2018-12-29T17:44:21+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/quickguide/</loc>
+    <loc>/installation/</loc>
     <lastmod>2018-12-29T17:44:21+01:00</lastmod>
   </url>
   
@@ -23,12 +23,17 @@
   </url>
   
   <url>
-    <loc>/basics/getdata/</loc>
+    <loc>/basics/computedg/</loc>
     <lastmod>2018-12-29T17:44:21+01:00</lastmod>
   </url>
   
   <url>
-    <loc>/basics/computedg/</loc>
+    <loc>/quickguide/</loc>
+    <lastmod>2018-12-29T17:44:21+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/basics/plotdata/</loc>
     <lastmod>2018-12-29T17:44:21+01:00</lastmod>
   </url>
   

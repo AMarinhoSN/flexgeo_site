@@ -18,7 +18,7 @@ This script will generate the plot bellow
 
 ---
 
-## So what does that even mean?
+## So what does that mean?
 
 The plot might be not very informative at first glance, but to interpret it first we need to understand the meaning of curvature, $\kappa$, and torsion, $\tau$, values. The [wikipedia article on differential geometry of spatial curves](https://en.wikipedia.org/wiki/Differential_geometry_of_curves) is a very decent introduction which also include the mathematics behind it and you should check it, but for this tutorial let's try to keep it brief and simple. To understand what $\kappa$ and $\tau$ actually means, first we need to understand how such quantities are defined and they are defined based on the **framing of a curve**.
 
@@ -33,20 +33,25 @@ The standard choice for framing a curve is to use [the frenet-serret frame](http
 ![fs-frame](https://upload.wikimedia.org/wikipedia/commons/1/14/Frenet-Serret-frame_along_Vivani-curve.gif)
 
 
-Now imagine that this particle just move in a straight line trajectory without any rotational motion. For such case the, $\vec{T}$ and $\vec{B}$ will be constant and equal to zero.
-
-
-
-[...with such vectors now is possible to define our beloved quantities]
+Now imagine that this particle just move in a straight line trajectory without any rotational motion. For such case the, $\vec{T}$ and $\vec{B}$ will be constant. On the other hand, if the particle moves on a non straight line trajectory but keep in the exact same plane, $\vec{T}$ will change while $d\vec{B}$ will still be constant. Considering these features, is possible tu use $\vec{T}$ and $\vec{B}$ to define quantities that measures how much a given point in a curve deviates from a straight line and from a plane.
 
 #### defining $\kappa$ and $\tau$
+Let's first start with **curvature**, $\kappa$. We can define $\kappa$ as a measurement of how much a point in a given curve deviates from straight line by considering as a measurement of how much $\vec{T}$ changes along the curve by:
+$$
+\kappa = \| \vec{\kappa}(s) \| = \| \frac{d\vec{T}}{ds} \|
+$$
 
-$\kappa$ reflects how much a given curve deviates from a straight line, if $\kappa = 0$, then the curve will be a perfect straight line at  
+if $\kappa = 0$ for a given point $t$, then the curve will be a perfect straight line at $t$. As higher the $\kappa$ values, the higher will be the change of $\vec{T}$ at the vicinity of $t$. Therefore, if a $\kappa$ spike at point $t$ appears in your curve, this means that at point $t$ there is a abrupt change in the direction of the curve. Similarly, the same rationale can be applied to planes by defining the **Torsion**, $\tau$, as
+$$
+\tau = \| \vec{\tau} \| = \| \frac{d\vec{B}}{ds} \|
+$$
+
+If a $\tau$ spike at point $t$ appears in your curve, this means that at point $t$ there is an abrupt change in the plane in the vicinity of $t$. With those to descriptors one can uniquely characterize any 3D regular curve via $\kappa$ and $\tau$ as a function of $s$. For instance, check how the $\kappa$ and $\tau$ values of a Torus knots relate to its Frenet-Serret frame in the animation bellow.
 
 ![gif](https://upload.wikimedia.org/wikipedia/commons/6/68/Torus-Knot_uebereinander_animated.gif)
 
-## That's nice, but so what?
+With that in mind you should be able to look to the plot generated and have an idea of what it means.
 
-[comment specific aspects of the plot and how it relate to the structure]
-For example, at residues 24-34  
-A little breakdown
+## What about the plot?
+
+The plot generate express the $\kappa$ and $\tau$ values per residue $t$ for all conformations of the ensemble. Each line of the plot is the representation of a single conformation and how much a residue change its "signature" give you an idea of its flexibility and what is happening. For instance, just by looking at the plot you can claim that residues 24 to 34 are a stable helix, that the last residues are more flexible and the region around residue 10 present a higher flexibility than the rest of the protein and residues 36 and 60 are stable points of inflection in the backbone. Look at the ensemble on Pymol and check if our interpretation make sense ;).
