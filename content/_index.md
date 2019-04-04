@@ -2,7 +2,7 @@
 
 FleXgeo is a software package design to compute and analyse protein conformational ensembles using a differential geometry (DG) representation of protein backbone. The current available version is the prototype software written to compute all analyses presented at:
 
-> [“A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone", PROTEINS: Structure, Function, and Bioinformatics, 2018](https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652)
+> [Silva Neto, AM, Silva, SR, Vendruscolo, M, Camilloni, C, Montalvão, RW. A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone. Proteins. 2019; 87: 302– 312](https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652)
 
 While fully functional, keep in mind that this prototype was written to fulfil the authors own selfish desires. We try our best to make it usable to others outside our group, but for sure there are a lot to improve. If you have any suggestions, feel free to contact Antonio Marinho at `a.marinho@cent.uw.edu.pl`.
 

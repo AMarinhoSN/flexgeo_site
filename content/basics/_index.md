@@ -13,7 +13,7 @@ pre = "<b>1. </b>"
 First of all, did you read the FleXgeo paper?
 If not, I highly recommend you to check the awesome <sup>[1](#footnote1)</sup> paper bellow before proceed.
 
-> [“A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone", PROTEINS: Structure, Function, and Bioinformatics, 2018](https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652)
+> [Silva Neto, AM, Silva, SR, Vendruscolo, M, Camilloni, C, Montalvão, RW. A superposition free method for protein conformational ensemble analyses and local clustering based on a differential geometry representation of backbone. Proteins. 2019; 87: 302– 312](https://onlinelibrary.wiley.com/doi/abs/10.1002/prot.25652)
 
 This is a basic tutorial designed to be a quick tour on how to use FleXgeo, to achieve that we will reproduce Ubiquitin analyses presented on the FleXgeo paper.
 
