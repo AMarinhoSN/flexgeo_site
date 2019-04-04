@@ -34,7 +34,7 @@ Imagined that you try different superposition solution for this Ubq C-terminal t
 
 > "**The world would be much better if we have an intuitive mathematical representation of the protein conformational space**".
 
-Some friend told you about hearing some crazy rumour about some ancient protein differential geometry witchcraft that avoid the structural superposition problem. You google a bit, you check some awesome papers describing it and find out that this mathematical representation may help you solve your problem. Then you find that there is this FleXgeo software you can use to compute it and is convinced that you should at least give it a try.
+Some friend told you about protein differential geometry that avoid the structural superposition problem. You google a bit, you check some papers describing it and find out that this mathematical representation may help you solve your problem. Then you find that there is this FleXgeo software you can use to compute it and is convinced that you should at least give it a try.
 
 ---
 
@@ -52,13 +52,13 @@ Considering 1), 2) and 3), therefore
 
 ---
 
-## How this DG witchcraft avoids the superposition problem?
+## How this DG avoids the superposition problem?
 
 In a nutshell, the DG-based representation of protein backbone have the advantage of avoiding the superposition problem because the descriptors are absolute in space. This specific property rely on the [**Fundamental Theorem of Space Curves**](https://en.wikipedia.org/wiki/Fundamental_theorem_of_curves), which state that every regular spatial 3D-curve can be uniquely characterized by its curvature, $\kappa$, and $\tau$ as a function of arc length, $s$. **The mathematical proof of this theorem is not trivial, however its meaning is intuitive**. Imagine that one have two equal semi-rigid straight wires. Only two kind of distortions are possible to be imposed on such wires, 1) to curve it and/or 2) to torsion it in a given set of points. If wire $A$ get a specific sequence of distortions operations and this exact same operations is also applied to wire $B$, both wires will end up with the exact same final shape. Therefore, one could compare such wires just by analysing the specific set of distortion applied to each one, without the need to *superimpose* such wires.
 
-Another way to look into this representation is to think how geometry tends to represent shapes using the minimum amount of descriptors as possible. For instance, circles can be describe solely by its radius, if two circles have different radius you know which one is bigger than the other without the need to superimposition. Similarly, 3D spatial curves can be uniquely specified by $\kappa$ and $\tau$ as a function of $s$. Don't worry if all of this sounds too abstract for you, along this tutorial we will present in a (hopefully) intuitive and easy to understand way what all of this actually means and how to interpret its meaning on the structural biology analyses context.
+Another way to look into this representation is to think how geometry tends to represent shapes using the minimum amount of descriptors as possible. Circles can be describe solely by its radius, if two circles have different radius you know which one is bigger than the other without the need of superimposition. Similarly, 3D spatial curves can be uniquely specified by $\kappa$ and $\tau$ as a function of $s$. Don't worry if all of this sounds too abstract for you, along this tutorial we will present in a (hopefully) intuitive and easy to understand way what all of this actually means and how to interpret its meaning on the structural biology analyses context.
 
-Now that you have a at least general notion of what this representation is all about, we can define our goals.
+Now that you have a general notion of what this representation is all about, we can define our goals.
 
 {{% notice note %}}
 A more detailed description of the math behind the method is available at [FleXgeo paper](https://onlinelibrary.wiley.com/doi/10.1002/prot.25652), but a section devoted for the math-hardcore structural biologist (that we know you are) will be added to the website in the future.
@@ -68,7 +68,7 @@ A more detailed description of the math behind the method is available at [FleXg
 
 ## Main goal
 
-Characterize and explore backbone dynamics of the C-terminal tail of Ubiquitin using differential geometry.
+Characterize and explore backbone dynamics of Ubiquitin using differential geometry.
 
 ---
 
@@ -76,5 +76,6 @@ Characterize and explore backbone dynamics of the C-terminal tail of Ubiquitin u
 
 1. Compute differential geometry representation
 2. Plot the raw data
-3. Compute $d_{max}$ to quantify protein flexibility
-4. Check if there is an interesting clustering solution (SPOILER ALERT: there is not, but is nice to know how to do it)
+3. Compute residues distances
+4. Compute $d_{max}$ to quantify protein flexibility
+5. Check if there is an interesting clustering solution (SPOILER ALERT: there is not, but is nice to know how to do it)
